@@ -1,0 +1,11 @@
+CREATE DATABASE flashcards;
+
+USE flashcards;
+
+CREATE TABLE cards (
+	id INTEGER(10) AUTO_INCREMENT NOT NULL,
+    front VARCHAR(150) NOT NULL,
+    back VARCHAR(150) NOT NULL,
+    cardType VARCHAR(50) NOT NULL,
+    PRIMARY KEY(id)
+);
