@@ -19,49 +19,24 @@ connection.connect(function(err) {
   if (err) throw err;
 });
 
-var count = 0;
 
 inquirer.prompt([
 	{
 		type: 'list',
-		name: 'numOfCards',
-		message: 'How many flashcards would you like to create?',
-		choices:['1','2','3','4','5']
+		name: 'cardType',
+		message: 'Which type of flashcard would you like to create?',
+		choices:["Basic", "Cloze"]
 	}
 	
 ]).then(function(input){
-	var totalCards = parseFloat(input.numOfCards);
-	var askCardQuestions = function(){
-		if (count < totalCards){
-			inquirer.prompt([
-				{
-					type: 'list',
-					name: 'cardType',
-					message: 'Which type of flashcard would you like to create?',
-					choices:["Basic", "Cloze"]
-				}
-				
-			]).then(function(input){
-				
-				
 
-				if(input.cardType === "Basic"){
-					basicPrompt();
-				} else {
-					clozePrompt();
-				}
-
-				//attempt to use recursion
-				// count++;
-				// askCardQuestions();
-				
-			  });
-		}
+	if(input.cardType === "Basic"){
+		basicPrompt();
+	} else {
+		clozePrompt();
 	}
-	
-	askCardQuestions();
+});
 
-  });
 
 
 
